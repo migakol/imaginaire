@@ -489,3 +489,16 @@ def func(x, a, b, c):
 def linear(x, a, b):
     r"""Linear fitting function."""
     return a * x + b
+
+
+if __name__ == "__main__":
+    pass
+    img_name = '/home/ubuntu/deployment/imaginaire/projects/fs_vid2vid/test_data/faceForensics/reference/images/alan2.jpg'
+
+    import face_alignment
+    from skimage import io
+    fa = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, device='cpu')
+
+    input = io.imread(img_name)
+    image_preds = fa.get_landmarks(input)
+    print(image_preds)

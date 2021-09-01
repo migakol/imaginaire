@@ -9,7 +9,9 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from scipy.stats import truncnorm
-from torch._six import container_abcs, string_classes
+import collections.abc as container_abcs
+from torch._six import string_classes
+# from torch._six import container_abcs, string_classes
 
 
 def split_labels(labels, label_lengths):
