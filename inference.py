@@ -13,6 +13,9 @@ from imaginaire.utils.io import get_checkpoint
 from imaginaire.utils.logging import init_logging
 from imaginaire.utils.trainer import \
     (get_model_optimizer_and_scheduler, get_trainer, set_random_seed)
+import numpy as np
+import cv2 as cv
+import os
 
 
 def parse_args():
@@ -88,4 +91,16 @@ def main():
 
 
 if __name__ == "__main__":
+
+    input_image = '/home/ubuntu/deployment/talking_faces/misc/image_folder/000000.jpg'
+    img = cv.imread(input_image)
+    folder = '/home/ubuntu/deployment/talking_faces/misc/Mouth_Source/68160001'
+    pose_folder = '/home/ubuntu/deployment/talking_faces/misc/pose_folder'
+    for k in range(363):
+        basic_name = f'{k:06d}' + '.jpg'
+        # img = np.zeros((224, 224, 3), dtype='uint8')
+        cv.imwrite(os.path.join(folder, basic_name), img)
+        if k < 212:
+            cv.imwrite(os.path.join(pose_folder, basic_name), img)
+
     main()
